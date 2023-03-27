@@ -1,0 +1,3 @@
+<launch>
+<node pkg="robot_quiz" type="robot_move.py" name="Move_robot" output="screen"> </node>
+</launch>
