@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="age_publisher.py" name="simple_topics_publisher" output="screen"> </node>
-</launch>

@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="simple_topic_subscriber.py" name="something_something_subscribery" output="screen"> </node>
-</launch>

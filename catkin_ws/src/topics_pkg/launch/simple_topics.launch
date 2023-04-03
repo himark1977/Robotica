@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="simple_topics_publisher.cpp" name="simple_topics_publisher" output="screen"> </node>
-</launch>

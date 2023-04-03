@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="age_subscriber.py" name="simple_topics_subs" output="screen"> </node>
-</launch>

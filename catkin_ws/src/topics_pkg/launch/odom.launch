@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="odom.py" name="Odometry" output="screen"> </node>
-</launch>

@@ -1,3 +1,0 @@
-<launch>
-<node pkg="topics_pkg" type="z_move.py" name="Move_robot_on_Z_axis" output="screen"> </node>
-</launch>
