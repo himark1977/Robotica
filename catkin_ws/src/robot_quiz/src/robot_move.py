@@ -1,50 +1,26 @@
 #! /usr/bin/env python
 
 import rospy
-
-from geometry_msgs.msg import Twist
-
 from sensor_msgs.msg import LaserScan
-
-disToObstacle = 1
+from geometry_msgs.msg import Twist
 
 def callback(msg):
 
-	rospy.loginfo(rospy.get_caller_id()+ 'The distance to obstacle is - %s',msg.ranges[359])
+  #If the distance to an obstacle in front of the robot is bigger than 1 meter, the robot will move forward
+  if msg.ranges[0] > 1:
+      move.linear.x = 0.5
+      move.angular.z = 0.0
 
-	if msg.ranges[359]>disToObstacle:
+  #If the distance to an obstacle in front of the robot is smaller than 1 meter, the robot will stop
+  if msg.ranges[0] < 1:
+      move.linear.x = 0.0
+      move.angular.z = 0.5
 
-	    print('in')
+  pub.publish(move)
 
-	    move.linear.x = .1
-
-	    move.angular.z = .5
-
-	if msg.ranges[359] < disToObstacle:
-
-	    print('out')
-
-	    move.linear.x = 0
-
-	    move.angular.z = .5
-
-	while not rospy.is_shutdown():
-
-	    pub.publish(move)
-
-	    rate.sleep()
-	    
-	    
-rospy.init_node('topics_quiz_node')
-
+rospy.init_node('rotw5_node')
+sub = rospy.Subscriber('/diffbot/scan', LaserScan, callback) #We subscribe to the laser's topic
+pub = rospy.Publisher('/diffbot/mobile_base_controller/cmd_vel', Twist)
 move = Twist()
-
-rate=rospy.Rate(2)
-    
-sub = rospy.Subscriber('/scan',LaserScan,callback)
-
-
-pub = rospy.Publisher('/cmd_vel',Twist,queue_size = 1)
-
 
 rospy.spin()
