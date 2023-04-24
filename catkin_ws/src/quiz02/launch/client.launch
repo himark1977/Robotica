@@ -1,0 +1,4 @@
+<launch>
+    <node pkg = "quiz02" type = "client.py" name="SERVER" output = "screen">
+    </node>
+</launch>
