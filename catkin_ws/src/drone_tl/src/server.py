@@ -16,24 +16,21 @@ class DroneActionServer(object):
         self._result = droneResult()
 
     def execute_cb(self, goal):
-        rospy.loginfo('DroneActionServer: Executing goal...')
-        success = True
         if goal.command == 'TAKEOFF':
             self._pub.publish(Empty())
             self._feedback.feedback = 'Taking off...'
             self._as.publish_feedback(self._feedback)
             self._rate.sleep()
-            self._result.result = 'Drone took off'
-            rospy.loginfo('DroneActionServer: Drone took off')
+            self._result.result = ''
             self._as.set_succeeded(self._result)
         elif goal.command == 'LAND':
             self._pub2.publish(Empty())
             self._feedback.feedback = 'Landing...'
             self._as.publish_feedback(self._feedback)
             self._rate.sleep()
-            self._result.result = 'Drone landed'
-            rospy.loginfo('DroneActionServer: Drone landed')
+            self._result.result = ''
             self._as.set_succeeded(self._result)
+        success = True
 
 if __name__ == '__main__':
     rospy.init_node('drone_action_server')
